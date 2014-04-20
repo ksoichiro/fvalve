@@ -33,13 +33,13 @@ fi
 which rvm > /dev/null 2>&1
 if [ $? -ne 0 ]; then
   curl -sSL https://get.rvm.io | bash -s stable
-fi
 
-grep rvm ~vagrant/.bashrc > /dev/null 2>&1
-if [ $? -ne 0 ]; then
-  echo "source ~/.rvm/scripts/rvm" >> ~vagrant/.bashrc
+  source /usr/local/rvm/scripts/rvm
+
+  rvm requirements
   rvm install 1.9.3
   rvm use 1.9.3
 fi
 
+cd /vagrant
 bundle install
