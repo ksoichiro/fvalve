@@ -37,6 +37,7 @@ class Rotater
 			exit 1
 		end
 
+		cwd = Dir.getwd
 		Dir.chdir(@target_dir)
 		gen = 0
 		deleted = 0
@@ -48,6 +49,7 @@ class Rotater
 				deleted = deleted + 1
 			end
 		end
+		Dir.chdir(cwd)
 
 		Rotater.logi "Deleted #{deleted} file(s)."
 		Rotater.logi "Done."
